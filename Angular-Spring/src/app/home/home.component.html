@@ -1,0 +1,18 @@
+<div class="container">
+    <h1 class="my-3">
+        Bienvenido a Aprender!
+    </h1>
+    <button type="button" (click)="setOcultar()" class="btn btn-primary my-3">{{Mostrar == true? 'Ocultar':'Mostrar'}}</button>
+    &nbsp;
+    <button type="button" [routerLink]="['/clientes']" class="btn btn-success my-3">Clientes</button>
+
+<div class="card">
+    <div class="card-header">
+        Listado
+    </div>
+    <ul class="list-group" *ngIf="Mostrar"> 
+        <li class="list-group-item" *ngFor = "let curso of ListPendientes">{{curso}}</li>
+    </ul>
+</div>
+</div>
+

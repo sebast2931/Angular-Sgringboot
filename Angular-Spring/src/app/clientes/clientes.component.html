@@ -1,0 +1,60 @@
+<!-- <div class="container"> -->
+<div class="card border-secondary mb-3 my-3">
+  <div class="card-header"><b>Clientes</b></div>
+  <div class="card-body text-secondary">
+    <h5 class="card-title">Listado de Clientes</h5>
+    <div class="container">
+        <div class="input-group mb-3 mt-3">
+            <input  type="text" class="form-control col-auto" name="filterPost" [(ngModel)]="filterPost" 
+            placeholder="Buscar"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <!-- <button mat-raised-button>Buscar</button> -->
+            <div class="ml-3">            
+                <button class="btn btn-success" [routerLink]="">Crear
+                    nuevo</button>
+            </div> 
+        </div>
+        
+    </div>
+    <div class="table-responsive">
+
+        <div *ngIf="clientes?.length==0" class="alert alert-info">
+            No hay datos!
+
+        </div>
+    <table class="table table-bordered  table-striped" *ngIf="clientes?.length>0">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Fecha</th>
+                <th>Editar</th> 
+                <th>Eliminar</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor ="let datos of clientes | filterClientes: filterPost">
+                <td>{{datos.id}}</td>
+                <td>{{datos.nombre}}</td>
+                <td>{{datos.apellidos | uppercase}}</td>
+                <td>{{datos.telefono}}</td>
+                <td>{{datos.email}}</td>
+                <td>{{datos.create_at | date:'EEEE dd, MMMM, yyyy'}}</td>
+                <td>
+                    <button class="btn btn-primary" [routerLink]="['/clientes-form', datos.id]">Editar</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="delete(datos)">Eliminar</button>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <app-paginator></app-paginator>
+</div>
+  </div>
+</div>
+<!-- </div> -->
